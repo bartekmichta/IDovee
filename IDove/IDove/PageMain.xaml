@@ -1,0 +1,25 @@
+﻿<Page x:Class="IDove.PageMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IDove"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="PageMain" Width="800" Height="650">
+
+    <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+        <DataGrid x:Name="DataGridPigeon" Height="360" VerticalAlignment="Top" IsReadOnly="True" AreRowDetailsFrozen="True" Margin="10,0,0,0" MinColumnWidth="50" HorizontalAlignment="Left" Width="475" ColumnWidth="160"/>
+        <TextBox x:Name="IdPigeon" HorizontalAlignment="Left" Height="28" Margin="103,399,0,0" TextWrapping="Wrap" Text="IdPigeon" VerticalAlignment="Top" Width="166" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" TextChanged="IdPigeon_TextChanged"/>
+        <TextBox x:Name="IdDovecote" HorizontalAlignment="Left" Height="28" Margin="103,479,0,0" TextWrapping="Wrap" Text="IdDovecote" VerticalAlignment="Top" Width="166" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <TextBox x:Name="Country" HorizontalAlignment="Left" Height="28" Margin="103,564,0,0" TextWrapping="Wrap" Text="Country" VerticalAlignment="Top" Width="166" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <TextBox x:Name="Color" HorizontalAlignment="Left" Height="28" Margin="319,564,0,0" TextWrapping="Wrap" Text="Color" VerticalAlignment="Top" Width="166" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <TextBox x:Name="Yerabook" HorizontalAlignment="Left" Height="28" Margin="319,399,0,0" TextWrapping="Wrap" Text="Yearbook" VerticalAlignment="Top" Width="170" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <Button x:Name="AddPigeon" Content="+" HorizontalAlignment="Left" Height="56" VerticalAlignment="Bottom" Width="43" Foreground="Black" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" FontSize="48" FontWeight="Bold" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Margin="10,0,0,215" Cursor="Hand" Click="AddPigeon_Click"/>
+        <Button x:Name="ChangePigeon" Content="*" HorizontalAlignment="Left" Height="56" Margin="10,524,0,0" VerticalAlignment="Top" Width="48" FontSize="48" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" FontWeight="Bold" RenderTransformOrigin="-0.5,0.5" Cursor="Hand" Click="ChangePigeon_Click"/>
+        <Button x:Name="DeletePigeon" Content="-" HorizontalAlignment="Left" Height="57" Margin="10,440,0,0" VerticalAlignment="Top" Width="43" FontSize="48" FontWeight="Bold" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Cursor="Hand" Click="DeletePigeon_Click"/>
+        <TextBox x:Name="PigeonNumber" HorizontalAlignment="Left" Height="28" Margin="319,479,0,0" TextWrapping="Wrap" Text="PigeonNumber" VerticalAlignment="Top" Width="170" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <DataGrid x:Name="DataGridView" HorizontalAlignment="Left" Height="360" Margin="508,0,0,0" VerticalAlignment="Top" Width="268"/>
+
+    </Grid>
+</Page>
