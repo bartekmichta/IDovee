@@ -12,20 +12,26 @@ namespace IDove
     using System;
     using System.Collections.Generic;
     
-    public partial class Branch
+    public partial class Pigeon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Branch()
+        public Pigeon()
         {
-            this.Section = new HashSet<Section>();
+            this.FlightResult = new HashSet<FlightResult>();
         }
     
+        public string IdPigeon { get; set; }
+        public int IdFancier { get; set; }
+        public string Country { get; set; }
+        public Nullable<int> IdColor { get; set; }
+        public string Yearbook { get; set; }
+        public int Sex { get; set; }
+        public string Number { get; set; }
         public string IdBranch { get; set; }
-        public int IdRegion { get; set; }
-        public string Name { get; set; }
     
-        public virtual Region Region { get; set; }
+        public virtual Color Color { get; set; }
+        public virtual Fancier Fancier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section> Section { get; set; }
+        public virtual ICollection<FlightResult> FlightResult { get; set; }
     }
 }

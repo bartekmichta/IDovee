@@ -17,14 +17,15 @@ namespace IDove
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dovecote()
         {
-            this.Pigeons = new HashSet<Pigeons>();
+            this.Fancier = new HashSet<Fancier>();
         }
     
-        public string IdDovecote { get; set; }
-        public string IdBranch { get; set; }
+        public int IdDovecote { get; set; }
+        public string Adress { get; set; }
+        public string City { get; set; }
+        public System.Data.Entity.Spatial.DbGeography GPS { get; set; }
     
-        public virtual Branch Branch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pigeons> Pigeons { get; set; }
+        public virtual ICollection<Fancier> Fancier { get; set; }
     }
 }

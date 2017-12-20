@@ -1,0 +1,32 @@
+﻿<Page x:Class="IDove.FanDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IDove"
+      mc:Ignorable="d" d:DesignWidth="600"
+      Title="FanDetails" Height="250">
+
+    <Grid Background="#FFE2E2E2">
+        <Label Content="Numer hodwcy:" HorizontalAlignment="Left" Height="25" Margin="263,47,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Numer sekcji:" HorizontalAlignment="Left" Height="25" Margin="263,13,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.48,-1.6"/>
+        <Label Content="Numer gołębnika:" HorizontalAlignment="Left" Height="26" Margin="263,78,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="-0.052,1.538"/>
+        <Label Content="Imię:" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="39"/>
+        <Label Content="Nazwisko:" HorizontalAlignment="Left" Height="26" Margin="10,44,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="Adres:" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="Miasto:" HorizontalAlignment="Left" Height="26" Margin="10,122,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="E-mail:" HorizontalAlignment="Left" Height="26" Margin="10,153,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="Telefon:" HorizontalAlignment="Left" Height="26" Margin="10,191,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <TextBox x:Name="TX_FName" HorizontalAlignment="Left" Height="20" Margin="85,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_LName" HorizontalAlignment="Left" Height="20" Margin="85,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.522,0.579"/>
+        <TextBox x:Name="TX_Adress" HorizontalAlignment="Left" Height="21" Margin="85,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_City" HorizontalAlignment="Left" Height="21" Margin="85,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_Mail" HorizontalAlignment="Left" Height="21" Margin="85,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_Tel" HorizontalAlignment="Left" Height="21" Margin="85,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_IdSection" HorizontalAlignment="Left" Height="20" Margin="407,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_IdFancier" HorizontalAlignment="Left" Height="19" Margin="407,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_IdDovecote" HorizontalAlignment="Left" Height="20" Margin="407,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <Button x:Name="TX_Complete" Content="Zatwierdź" HorizontalAlignment="Left" Height="26" Margin="422,191,0,0" VerticalAlignment="Top" Width="139" Click="TX_Complete_Click"/>
+
+    </Grid>
+</Page>

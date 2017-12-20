@@ -12,20 +12,19 @@ namespace IDove
     using System;
     using System.Collections.Generic;
     
-    public partial class Branch
+    public partial class Color
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Branch()
+        public Color()
         {
-            this.Section = new HashSet<Section>();
+            this.Pigeon = new HashSet<Pigeon>();
         }
     
-        public string IdBranch { get; set; }
-        public int IdRegion { get; set; }
+        public int IdColor { get; set; }
+        public string Shortcut { get; set; }
         public string Name { get; set; }
     
-        public virtual Region Region { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section> Section { get; set; }
+        public virtual ICollection<Pigeon> Pigeon { get; set; }
     }
 }

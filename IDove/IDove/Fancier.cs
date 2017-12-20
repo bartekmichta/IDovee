@@ -12,20 +12,27 @@ namespace IDove
     using System;
     using System.Collections.Generic;
     
-    public partial class Branch
+    public partial class Fancier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Branch()
+        public Fancier()
         {
-            this.Section = new HashSet<Section>();
+            this.Pigeon = new HashSet<Pigeon>();
         }
     
-        public string IdBranch { get; set; }
-        public int IdRegion { get; set; }
-        public string Name { get; set; }
+        public int IdFancier { get; set; }
+        public int IdSection { get; set; }
+        public int IdDovecote { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Adress { get; set; }
+        public string City { get; set; }
+        public string Mail { get; set; }
+        public string Telephone_Number { get; set; }
     
-        public virtual Region Region { get; set; }
+        public virtual Dovecote Dovecote { get; set; }
+        public virtual Section Section { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section> Section { get; set; }
+        public virtual ICollection<Pigeon> Pigeon { get; set; }
     }
 }

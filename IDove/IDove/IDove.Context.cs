@@ -12,8 +12,6 @@ namespace IDove
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class IDoveEntities : DbContext
     {
@@ -28,178 +26,13 @@ namespace IDove
         }
     
         public virtual DbSet<Branch> Branch { get; set; }
+        public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Dovecote> Dovecote { get; set; }
-        public virtual DbSet<Pigeons> Pigeons { get; set; }
-        public virtual DbSet<V_Pigeon> V_Pigeon { get; set; }
-    
-        public virtual int DeletePigeon(string idPigeon)
-        {
-            var idPigeonParameter = idPigeon != null ?
-                new ObjectParameter("idPigeon", idPigeon) :
-                new ObjectParameter("idPigeon", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeletePigeon", idPigeonParameter);
-        }
-    
-        public virtual int InsertPigeon(string idPigeon, string idDovecote, string pigeonNumber, string color, string country, string yearbook)
-        {
-            var idPigeonParameter = idPigeon != null ?
-                new ObjectParameter("idPigeon", idPigeon) :
-                new ObjectParameter("idPigeon", typeof(string));
-    
-            var idDovecoteParameter = idDovecote != null ?
-                new ObjectParameter("idDovecote", idDovecote) :
-                new ObjectParameter("idDovecote", typeof(string));
-    
-            var pigeonNumberParameter = pigeonNumber != null ?
-                new ObjectParameter("pigeonNumber", pigeonNumber) :
-                new ObjectParameter("pigeonNumber", typeof(string));
-    
-            var colorParameter = color != null ?
-                new ObjectParameter("color", color) :
-                new ObjectParameter("color", typeof(string));
-    
-            var countryParameter = country != null ?
-                new ObjectParameter("country", country) :
-                new ObjectParameter("country", typeof(string));
-    
-            var yearbookParameter = yearbook != null ?
-                new ObjectParameter("yearbook", yearbook) :
-                new ObjectParameter("yearbook", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPigeon", idPigeonParameter, idDovecoteParameter, pigeonNumberParameter, colorParameter, countryParameter, yearbookParameter);
-        }
-    
-        public virtual int ModifyPigeon(string idPigeon, string idDovecote, string pigeonNumber, string color, string country, string yearbook)
-        {
-            var idPigeonParameter = idPigeon != null ?
-                new ObjectParameter("idPigeon", idPigeon) :
-                new ObjectParameter("idPigeon", typeof(string));
-    
-            var idDovecoteParameter = idDovecote != null ?
-                new ObjectParameter("idDovecote", idDovecote) :
-                new ObjectParameter("idDovecote", typeof(string));
-    
-            var pigeonNumberParameter = pigeonNumber != null ?
-                new ObjectParameter("pigeonNumber", pigeonNumber) :
-                new ObjectParameter("pigeonNumber", typeof(string));
-    
-            var colorParameter = color != null ?
-                new ObjectParameter("color", color) :
-                new ObjectParameter("color", typeof(string));
-    
-            var countryParameter = country != null ?
-                new ObjectParameter("country", country) :
-                new ObjectParameter("country", typeof(string));
-    
-            var yearbookParameter = yearbook != null ?
-                new ObjectParameter("yearbook", yearbook) :
-                new ObjectParameter("yearbook", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModifyPigeon", idPigeonParameter, idDovecoteParameter, pigeonNumberParameter, colorParameter, countryParameter, yearbookParameter);
-        }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
+        public virtual DbSet<Fancier> Fancier { get; set; }
+        public virtual DbSet<Flight> Flight { get; set; }
+        public virtual DbSet<FlightResult> FlightResult { get; set; }
+        public virtual DbSet<Pigeon> Pigeon { get; set; }
+        public virtual DbSet<Region> Region { get; set; }
+        public virtual DbSet<Section> Section { get; set; }
     }
 }

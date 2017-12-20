@@ -4,138 +4,258 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IDoveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IDoveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="IdBranch" />
           </Key>
-          <Property Name="IdBranch" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="IdRegion" Type="varchar" MaxLength="5" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IdBranch" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="IdColor" />
+          </Key>
+          <Property Name="IdColor" Type="int" Nullable="false" />
+          <Property Name="Shortcut" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="28" Nullable="false" />
         </EntityType>
         <EntityType Name="Dovecote">
           <Key>
             <PropertyRef Name="IdDovecote" />
           </Key>
-          <Property Name="IdDovecote" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="IdBranch" Type="varchar" MaxLength="5" />
+          <Property Name="IdDovecote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="60" />
+          <Property Name="City" Type="varchar" MaxLength="40" />
+          <Property Name="GPS" Type="geography" />
         </EntityType>
-        <EntityType Name="Pigeons">
+        <EntityType Name="Fancier">
+          <Key>
+            <PropertyRef Name="IdFancier" />
+          </Key>
+          <Property Name="IdFancier" Type="int" Nullable="false" />
+          <Property Name="IdSection" Type="int" Nullable="false" />
+          <Property Name="IdDovecote" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="60" />
+          <Property Name="City" Type="varchar" MaxLength="40" />
+          <Property Name="Mail" Type="varchar" MaxLength="240" />
+          <Property Name="Telephone_Number" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="IdFlight" />
+          </Key>
+          <Property Name="IdFlight" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="40" />
+          <Property Name="GPS" Type="geography" Nullable="false" />
+          <Property Name="TimeStart" Type="datetime" Nullable="false" />
+          <Property Name="FlightWeather" Type="varchar" MaxLength="20" />
+          <Property Name="ArrivalWeather" Type="varchar" MaxLength="20" />
+          <Property Name="ClockSet" Type="datetime" Nullable="false" />
+          <Property Name="ClockEcho" Type="datetime" Nullable="false" />
+          <Property Name="SeriePigeonsFromStartList" Type="int" Nullable="false" />
+          <Property Name="SeriePigeonsFromClockList" Type="int" Nullable="false" />
+          <Property Name="CatA" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CatB" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CatC" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CatD" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CatM" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="ConstantPoints" Type="float" />
+          <Property Name="FancierQuantity" Type="int" />
+          <Property Name="PigeonsQuantity" Type="int" />
+          <Property Name="ScorePoints" Type="int" />
+          <Property Name="FirstPigeonTime" Type="time" Precision="7" />
+          <Property Name="FirstPigeonSpeed" Type="float" />
+          <Property Name="LastPigeonTime" Type="time" Precision="7" />
+          <Property Name="LastPigeonSpeed" Type="float" />
+        </EntityType>
+        <EntityType Name="FlightResult">
+          <Key>
+            <PropertyRef Name="IdFlightResult" />
+          </Key>
+          <Property Name="IdFlightResult" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPigeon" Type="varchar" MaxLength="18" />
+          <Property Name="IdFlight" Type="int" />
+          <Property Name="TimeArrival" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Speed" Type="float" Nullable="false" />
+          <Property Name="Coeficient" Type="float" />
+          <Property Name="GMP" Type="float" />
+          <Property Name="Points" Type="float" />
+          <Property Name="Distance" Type="int" />
+        </EntityType>
+        <EntityType Name="Pigeon">
           <Key>
             <PropertyRef Name="IdPigeon" />
           </Key>
-          <Property Name="IdPigeon" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="PigeonNumber" Type="varchar" MaxLength="5" />
-          <Property Name="IdDovecote" Type="varchar" MaxLength="5" />
-          <Property Name="Color" Type="varchar" MaxLength="15" />
-          <Property Name="Country" Type="varchar" MaxLength="3" />
-          <Property Name="Yearbook" Type="varchar" MaxLength="5" />
+          <Property Name="IdPigeon" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="IdFancier" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="IdColor" Type="int" />
+          <Property Name="Yearbook" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="5" />
+          <Property Name="IdBranch" Type="varchar" MaxLength="4" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'IDove.dbo.V_Pigeon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="V_Pigeon">
+        <EntityType Name="Region">
           <Key>
-            <PropertyRef Name="IdPigeon" />
+            <PropertyRef Name="IdRegion" />
           </Key>
-          <Property Name="IdPigeon" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="color" Type="varchar" MaxLength="15" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Dovecote__IdBran__0D7A0286">
-          <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
-          <End Role="Dovecote" Type="Self.Dovecote" Multiplicity="*" />
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="IdSection" />
+          </Key>
+          <Property Name="IdSection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBranch" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Branch__IdRegion__4BAC3F29">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Branch">
-              <PropertyRef Name="IdBranch" />
+            <Principal Role="Region">
+              <PropertyRef Name="IdRegion" />
             </Principal>
-            <Dependent Role="Dovecote">
-              <PropertyRef Name="IdBranch" />
+            <Dependent Role="Branch">
+              <PropertyRef Name="IdRegion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pigeons__IdDovec__10566F31">
-          <End Role="Dovecote" Type="Self.Dovecote" Multiplicity="0..1" />
-          <End Role="Pigeons" Type="Self.Pigeons" Multiplicity="*" />
+        <Association Name="FK__Fancier__IdDovec__5441852A">
+          <End Role="Dovecote" Type="Self.Dovecote" Multiplicity="1" />
+          <End Role="Fancier" Type="Self.Fancier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dovecote">
               <PropertyRef Name="IdDovecote" />
             </Principal>
-            <Dependent Role="Pigeons">
+            <Dependent Role="Fancier">
               <PropertyRef Name="IdDovecote" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="DeletePigeon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idPigeon" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="InsertPigeon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idPigeon" Type="varchar" Mode="In" />
-          <Parameter Name="idDovecote" Type="varchar" Mode="In" />
-          <Parameter Name="pigeonNumber" Type="varchar" Mode="In" />
-          <Parameter Name="color" Type="varchar" Mode="In" />
-          <Parameter Name="country" Type="varchar" Mode="In" />
-          <Parameter Name="yearbook" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="ModifyPigeon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idPigeon" Type="varchar" Mode="In" />
-          <Parameter Name="idDovecote" Type="varchar" Mode="In" />
-          <Parameter Name="pigeonNumber" Type="varchar" Mode="In" />
-          <Parameter Name="color" Type="varchar" Mode="In" />
-          <Parameter Name="country" Type="varchar" Mode="In" />
-          <Parameter Name="yearbook" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Association Name="FK__Fancier__IdSecti__534D60F1">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="Fancier" Type="Self.Fancier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="IdSection" />
+            </Principal>
+            <Dependent Role="Fancier">
+              <PropertyRef Name="IdSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlightRes__IdFli__5FB337D6">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+          <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="IdFlight" />
+            </Principal>
+            <Dependent Role="FlightResult">
+              <PropertyRef Name="IdFlight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlightRes__IdPig__5EBF139D">
+          <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="0..1" />
+          <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pigeon">
+              <PropertyRef Name="IdPigeon" />
+            </Principal>
+            <Dependent Role="FlightResult">
+              <PropertyRef Name="IdPigeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pigeon__IdColor__59FA5E80">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="IdColor" />
+            </Principal>
+            <Dependent Role="Pigeon">
+              <PropertyRef Name="IdColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pigeon__IdFancie__59063A47">
+          <End Role="Fancier" Type="Self.Fancier" Multiplicity="1" />
+          <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fancier">
+              <PropertyRef Name="IdFancier" />
+            </Principal>
+            <Dependent Role="Pigeon">
+              <PropertyRef Name="IdFancier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Section__IdBranc__4E88ABD4">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="IdBranch" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="IdBranch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="IDoveModelStoreContainer">
           <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dovecote" EntityType="Self.Dovecote" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pigeons" EntityType="Self.Pigeons" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="V_Pigeon" EntityType="Self.V_Pigeon" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [V_Pigeon].[IdPigeon] AS [IdPigeon], 
-    [V_Pigeon].[color] AS [color], 
-    [V_Pigeon].[name] AS [name]
-    FROM [dbo].[V_Pigeon] AS [V_Pigeon]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Dovecote__IdBran__0D7A0286" Association="Self.FK__Dovecote__IdBran__0D7A0286">
+          <EntitySet Name="Fancier" EntityType="Self.Fancier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightResult" EntityType="Self.FlightResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pigeon" EntityType="Self.Pigeon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Branch__IdRegion__4BAC3F29" Association="Self.FK__Branch__IdRegion__4BAC3F29">
+            <End Role="Region" EntitySet="Region" />
             <End Role="Branch" EntitySet="Branch" />
-            <End Role="Dovecote" EntitySet="Dovecote" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pigeons__IdDovec__10566F31" Association="Self.FK__Pigeons__IdDovec__10566F31">
+          <AssociationSet Name="FK__Fancier__IdDovec__5441852A" Association="Self.FK__Fancier__IdDovec__5441852A">
             <End Role="Dovecote" EntitySet="Dovecote" />
-            <End Role="Pigeons" EntitySet="Pigeons" />
+            <End Role="Fancier" EntitySet="Fancier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fancier__IdSecti__534D60F1" Association="Self.FK__Fancier__IdSecti__534D60F1">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Fancier" EntitySet="Fancier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlightRes__IdFli__5FB337D6" Association="Self.FK__FlightRes__IdFli__5FB337D6">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="FlightResult" EntitySet="FlightResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlightRes__IdPig__5EBF139D" Association="Self.FK__FlightRes__IdPig__5EBF139D">
+            <End Role="Pigeon" EntitySet="Pigeon" />
+            <End Role="FlightResult" EntitySet="FlightResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pigeon__IdColor__59FA5E80" Association="Self.FK__Pigeon__IdColor__59FA5E80">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Pigeon" EntitySet="Pigeon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pigeon__IdFancie__59063A47" Association="Self.FK__Pigeon__IdFancie__59063A47">
+            <End Role="Fancier" EntitySet="Fancier" />
+            <End Role="Pigeon" EntitySet="Pigeon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Section__IdBranc__4E88ABD4" Association="Self.FK__Section__IdBranc__4E88ABD4">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Section" EntitySet="Section" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IDoveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -143,138 +263,267 @@ warning 6002: The table/view 'IDove.dbo.V_Pigeon' does not have a primary key de
           <Key>
             <PropertyRef Name="IdBranch" />
           </Key>
-          <Property Name="IdBranch" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdRegion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Dovecote" Relationship="Self.FK__Dovecote__IdBran__0D7A0286" FromRole="Branch" ToRole="Dovecote" />
+          <Property Name="IdBranch" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Region" Relationship="Self.FK__Branch__IdRegion__4BAC3F29" FromRole="Branch" ToRole="Region" />
+          <NavigationProperty Name="Section" Relationship="Self.FK__Section__IdBranc__4E88ABD4" FromRole="Branch" ToRole="Section" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="IdColor" />
+          </Key>
+          <Property Name="IdColor" Type="Int32" Nullable="false" />
+          <Property Name="Shortcut" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="28" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pigeon" Relationship="Self.FK__Pigeon__IdColor__59FA5E80" FromRole="Color" ToRole="Pigeon" />
         </EntityType>
         <EntityType Name="Dovecote">
           <Key>
             <PropertyRef Name="IdDovecote" />
           </Key>
-          <Property Name="IdDovecote" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdBranch" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Branch" Relationship="Self.FK__Dovecote__IdBran__0D7A0286" FromRole="Dovecote" ToRole="Branch" />
-          <NavigationProperty Name="Pigeons" Relationship="Self.FK__Pigeons__IdDovec__10566F31" FromRole="Dovecote" ToRole="Pigeons" />
+          <Property Name="IdDovecote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="GPS" Type="Geography" />
+          <NavigationProperty Name="Fancier" Relationship="Self.FK__Fancier__IdDovec__5441852A" FromRole="Dovecote" ToRole="Fancier" />
         </EntityType>
-        <EntityType Name="Pigeons">
+        <EntityType Name="Fancier">
+          <Key>
+            <PropertyRef Name="IdFancier" />
+          </Key>
+          <Property Name="IdFancier" Type="Int32" Nullable="false" />
+          <Property Name="IdSection" Type="Int32" Nullable="false" />
+          <Property Name="IdDovecote" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dovecote" Relationship="Self.FK__Fancier__IdDovec__5441852A" FromRole="Fancier" ToRole="Dovecote" />
+          <NavigationProperty Name="Section" Relationship="Self.FK__Fancier__IdSecti__534D60F1" FromRole="Fancier" ToRole="Section" />
+          <NavigationProperty Name="Pigeon" Relationship="Self.FK__Pigeon__IdFancie__59063A47" FromRole="Fancier" ToRole="Pigeon" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="IdFlight" />
+          </Key>
+          <Property Name="IdFlight" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="GPS" Type="Geography" Nullable="false" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FlightWeather" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalWeather" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ClockSet" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClockEcho" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SeriePigeonsFromStartList" Type="Int32" Nullable="false" />
+          <Property Name="SeriePigeonsFromClockList" Type="Int32" Nullable="false" />
+          <Property Name="CatA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatB" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatC" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatM" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConstantPoints" Type="Double" />
+          <Property Name="FancierQuantity" Type="Int32" />
+          <Property Name="PigeonsQuantity" Type="Int32" />
+          <Property Name="ScorePoints" Type="Int32" />
+          <Property Name="FirstPigeonTime" Type="Time" Precision="7" />
+          <Property Name="FirstPigeonSpeed" Type="Double" />
+          <Property Name="LastPigeonTime" Type="Time" Precision="7" />
+          <Property Name="LastPigeonSpeed" Type="Double" />
+          <NavigationProperty Name="FlightResult" Relationship="Self.FK__FlightRes__IdFli__5FB337D6" FromRole="Flight" ToRole="FlightResult" />
+        </EntityType>
+        <EntityType Name="FlightResult">
+          <Key>
+            <PropertyRef Name="IdFlightResult" />
+          </Key>
+          <Property Name="IdFlightResult" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPigeon" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="IdFlight" Type="Int32" />
+          <Property Name="TimeArrival" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Speed" Type="Double" Nullable="false" />
+          <Property Name="Coeficient" Type="Double" />
+          <Property Name="GMP" Type="Double" />
+          <Property Name="Points" Type="Double" />
+          <Property Name="Distance" Type="Int32" />
+          <NavigationProperty Name="Flight" Relationship="Self.FK__FlightRes__IdFli__5FB337D6" FromRole="FlightResult" ToRole="Flight" />
+          <NavigationProperty Name="Pigeon" Relationship="Self.FK__FlightRes__IdPig__5EBF139D" FromRole="FlightResult" ToRole="Pigeon" />
+        </EntityType>
+        <EntityType Name="Pigeon">
           <Key>
             <PropertyRef Name="IdPigeon" />
           </Key>
-          <Property Name="IdPigeon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PigeonNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="IdDovecote" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="Yearbook" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Dovecote" Relationship="Self.FK__Pigeons__IdDovec__10566F31" FromRole="Pigeons" ToRole="Dovecote" />
+          <Property Name="IdPigeon" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdFancier" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdColor" Type="Int32" />
+          <Property Name="Yearbook" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IdBranch" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Color" Relationship="Self.FK__Pigeon__IdColor__59FA5E80" FromRole="Pigeon" ToRole="Color" />
+          <NavigationProperty Name="Fancier" Relationship="Self.FK__Pigeon__IdFancie__59063A47" FromRole="Pigeon" ToRole="Fancier" />
+          <NavigationProperty Name="FlightResult" Relationship="Self.FK__FlightRes__IdPig__5EBF139D" FromRole="Pigeon" ToRole="FlightResult" />
         </EntityType>
-        <Association Name="FK__Dovecote__IdBran__0D7A0286">
-          <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
-          <End Role="Dovecote" Type="Self.Dovecote" Multiplicity="*" />
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__Branch__IdRegion__4BAC3F29" FromRole="Region" ToRole="Branch" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="IdSection" />
+          </Key>
+          <Property Name="IdSection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBranch" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__Section__IdBranc__4E88ABD4" FromRole="Section" ToRole="Branch" />
+          <NavigationProperty Name="Fancier" Relationship="Self.FK__Fancier__IdSecti__534D60F1" FromRole="Section" ToRole="Fancier" />
+        </EntityType>
+        <Association Name="FK__Branch__IdRegion__4BAC3F29">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Section__IdBranc__4E88ABD4">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Branch">
               <PropertyRef Name="IdBranch" />
             </Principal>
-            <Dependent Role="Dovecote">
+            <Dependent Role="Section">
               <PropertyRef Name="IdBranch" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pigeons__IdDovec__10566F31">
-          <End Role="Dovecote" Type="Self.Dovecote" Multiplicity="0..1" />
-          <End Role="Pigeons" Type="Self.Pigeons" Multiplicity="*" />
+        <Association Name="FK__Pigeon__IdColor__59FA5E80">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="IdColor" />
+            </Principal>
+            <Dependent Role="Pigeon">
+              <PropertyRef Name="IdColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fancier__IdDovec__5441852A">
+          <End Role="Dovecote" Type="Self.Dovecote" Multiplicity="1" />
+          <End Role="Fancier" Type="Self.Fancier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dovecote">
               <PropertyRef Name="IdDovecote" />
             </Principal>
-            <Dependent Role="Pigeons">
+            <Dependent Role="Fancier">
               <PropertyRef Name="IdDovecote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fancier__IdSecti__534D60F1">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="Fancier" Type="Self.Fancier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="IdSection" />
+            </Principal>
+            <Dependent Role="Fancier">
+              <PropertyRef Name="IdSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pigeon__IdFancie__59063A47">
+          <End Role="Fancier" Type="Self.Fancier" Multiplicity="1" />
+          <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fancier">
+              <PropertyRef Name="IdFancier" />
+            </Principal>
+            <Dependent Role="Pigeon">
+              <PropertyRef Name="IdFancier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlightRes__IdFli__5FB337D6">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+          <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="IdFlight" />
+            </Principal>
+            <Dependent Role="FlightResult">
+              <PropertyRef Name="IdFlight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlightRes__IdPig__5EBF139D">
+          <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="0..1" />
+          <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pigeon">
+              <PropertyRef Name="IdPigeon" />
+            </Principal>
+            <Dependent Role="FlightResult">
+              <PropertyRef Name="IdPigeon" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="IDoveEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Branch" EntityType="Self.Branch" />
+          <EntitySet Name="Color" EntityType="Self.Color" />
           <EntitySet Name="Dovecote" EntityType="Self.Dovecote" />
-          <EntitySet Name="Pigeons" EntityType="Self.Pigeons" />
-          <AssociationSet Name="FK__Dovecote__IdBran__0D7A0286" Association="Self.FK__Dovecote__IdBran__0D7A0286">
+          <EntitySet Name="Fancier" EntityType="Self.Fancier" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" />
+          <EntitySet Name="FlightResult" EntityType="Self.FlightResult" />
+          <EntitySet Name="Pigeon" EntityType="Self.Pigeon" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Section" EntityType="Self.Section" />
+          <AssociationSet Name="FK__Branch__IdRegion__4BAC3F29" Association="Self.FK__Branch__IdRegion__4BAC3F29">
+            <End Role="Region" EntitySet="Region" />
             <End Role="Branch" EntitySet="Branch" />
-            <End Role="Dovecote" EntitySet="Dovecote" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pigeons__IdDovec__10566F31" Association="Self.FK__Pigeons__IdDovec__10566F31">
-            <End Role="Dovecote" EntitySet="Dovecote" />
-            <End Role="Pigeons" EntitySet="Pigeons" />
+          <AssociationSet Name="FK__Section__IdBranc__4E88ABD4" Association="Self.FK__Section__IdBranc__4E88ABD4">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Section" EntitySet="Section" />
           </AssociationSet>
-          <FunctionImport Name="DeletePigeon">
-          <Parameter Name="idPigeon" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="InsertPigeon">
-            <Parameter Name="idPigeon" Mode="In" Type="String" />
-            <Parameter Name="idDovecote" Mode="In" Type="String" />
-            <Parameter Name="pigeonNumber" Mode="In" Type="String" />
-            <Parameter Name="color" Mode="In" Type="String" />
-            <Parameter Name="country" Mode="In" Type="String" />
-            <Parameter Name="yearbook" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ModifyPigeon">
-            <Parameter Name="idPigeon" Mode="In" Type="String" />
-            <Parameter Name="idDovecote" Mode="In" Type="String" />
-            <Parameter Name="pigeonNumber" Mode="In" Type="String" />
-            <Parameter Name="color" Mode="In" Type="String" />
-            <Parameter Name="country" Mode="In" Type="String" />
-            <Parameter Name="yearbook" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IDoveModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IDoveModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="V_Pigeon" EntityType="IDoveModel.V_Pigeon" />
+          <AssociationSet Name="FK__Pigeon__IdColor__59FA5E80" Association="Self.FK__Pigeon__IdColor__59FA5E80">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Pigeon" EntitySet="Pigeon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fancier__IdDovec__5441852A" Association="Self.FK__Fancier__IdDovec__5441852A">
+            <End Role="Dovecote" EntitySet="Dovecote" />
+            <End Role="Fancier" EntitySet="Fancier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fancier__IdSecti__534D60F1" Association="Self.FK__Fancier__IdSecti__534D60F1">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Fancier" EntitySet="Fancier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pigeon__IdFancie__59063A47" Association="Self.FK__Pigeon__IdFancie__59063A47">
+            <End Role="Fancier" EntitySet="Fancier" />
+            <End Role="Pigeon" EntitySet="Pigeon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlightRes__IdFli__5FB337D6" Association="Self.FK__FlightRes__IdFli__5FB337D6">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="FlightResult" EntitySet="FlightResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlightRes__IdPig__5EBF139D" Association="Self.FK__FlightRes__IdPig__5EBF139D">
+            <End Role="Pigeon" EntitySet="Pigeon" />
+            <End Role="FlightResult" EntitySet="FlightResult" />
+          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="V_Pigeon">
-          <Key>
-            <PropertyRef Name="IdPigeon" />
-          </Key>
-          <Property Name="IdPigeon" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -290,59 +539,113 @@ warning 6002: The table/view 'IDove.dbo.V_Pigeon' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="IDoveModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Dovecote">
             <EntityTypeMapping TypeName="IDoveModel.Dovecote">
               <MappingFragment StoreEntitySet="Dovecote">
                 <ScalarProperty Name="IdDovecote" ColumnName="IdDovecote" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="GPS" ColumnName="GPS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fancier">
+            <EntityTypeMapping TypeName="IDoveModel.Fancier">
+              <MappingFragment StoreEntitySet="Fancier">
+                <ScalarProperty Name="IdFancier" ColumnName="IdFancier" />
+                <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+                <ScalarProperty Name="IdDovecote" ColumnName="IdDovecote" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telephone_Number" ColumnName="Telephone_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight">
+            <EntityTypeMapping TypeName="IDoveModel.Flight">
+              <MappingFragment StoreEntitySet="Flight">
+                <ScalarProperty Name="IdFlight" ColumnName="IdFlight" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="FlightWeather" ColumnName="FlightWeather" />
+                <ScalarProperty Name="ArrivalWeather" ColumnName="ArrivalWeather" />
+                <ScalarProperty Name="ClockSet" ColumnName="ClockSet" />
+                <ScalarProperty Name="ClockEcho" ColumnName="ClockEcho" />
+                <ScalarProperty Name="SeriePigeonsFromStartList" ColumnName="SeriePigeonsFromStartList" />
+                <ScalarProperty Name="SeriePigeonsFromClockList" ColumnName="SeriePigeonsFromClockList" />
+                <ScalarProperty Name="CatA" ColumnName="CatA" />
+                <ScalarProperty Name="CatB" ColumnName="CatB" />
+                <ScalarProperty Name="CatC" ColumnName="CatC" />
+                <ScalarProperty Name="CatD" ColumnName="CatD" />
+                <ScalarProperty Name="CatM" ColumnName="CatM" />
+                <ScalarProperty Name="ConstantPoints" ColumnName="ConstantPoints" />
+                <ScalarProperty Name="FancierQuantity" ColumnName="FancierQuantity" />
+                <ScalarProperty Name="PigeonsQuantity" ColumnName="PigeonsQuantity" />
+                <ScalarProperty Name="ScorePoints" ColumnName="ScorePoints" />
+                <ScalarProperty Name="FirstPigeonTime" ColumnName="FirstPigeonTime" />
+                <ScalarProperty Name="FirstPigeonSpeed" ColumnName="FirstPigeonSpeed" />
+                <ScalarProperty Name="LastPigeonTime" ColumnName="LastPigeonTime" />
+                <ScalarProperty Name="LastPigeonSpeed" ColumnName="LastPigeonSpeed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightResult">
+            <EntityTypeMapping TypeName="IDoveModel.FlightResult">
+              <MappingFragment StoreEntitySet="FlightResult">
+                <ScalarProperty Name="IdFlightResult" ColumnName="IdFlightResult" />
+                <ScalarProperty Name="IdPigeon" ColumnName="IdPigeon" />
+                <ScalarProperty Name="IdFlight" ColumnName="IdFlight" />
+                <ScalarProperty Name="TimeArrival" ColumnName="TimeArrival" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Coeficient" ColumnName="Coeficient" />
+                <ScalarProperty Name="GMP" ColumnName="GMP" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pigeon">
+            <EntityTypeMapping TypeName="IDoveModel.Pigeon">
+              <MappingFragment StoreEntitySet="Pigeon">
+                <ScalarProperty Name="IdPigeon" ColumnName="IdPigeon" />
+                <ScalarProperty Name="IdFancier" ColumnName="IdFancier" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+                <ScalarProperty Name="Yearbook" ColumnName="Yearbook" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="IdBranch" ColumnName="IdBranch" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pigeons">
-            <EntityTypeMapping TypeName="IDoveModel.Pigeons">
-              <MappingFragment StoreEntitySet="Pigeons">
-                <ScalarProperty Name="IdPigeon" ColumnName="IdPigeon" />
-                <ScalarProperty Name="PigeonNumber" ColumnName="PigeonNumber" />
-                <ScalarProperty Name="IdDovecote" ColumnName="IdDovecote" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Yearbook" ColumnName="Yearbook" />
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="IDoveModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="DeletePigeon" FunctionName="IDoveModel.Store.DeletePigeon" />
-          <FunctionImportMapping FunctionImportName="InsertPigeon" FunctionName="IDoveModel.Store.InsertPigeon" />
-          <FunctionImportMapping FunctionImportName="ModifyPigeon" FunctionName="IDoveModel.Store.ModifyPigeon" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IDoveModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IDoveModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IDoveModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IDoveModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IDoveModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IDoveModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IDoveModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
+          <EntitySetMapping Name="Section">
+            <EntityTypeMapping TypeName="IDoveModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+                <ScalarProperty Name="IdBranch" ColumnName="IdBranch" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IDoveModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IDoveModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="V_Pigeon">
-            <EntityTypeMapping TypeName="IDoveModel.V_Pigeon">
-              <MappingFragment StoreEntitySet="V_Pigeon">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="IdPigeon" ColumnName="IdPigeon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

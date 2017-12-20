@@ -12,20 +12,20 @@ namespace IDove
     using System;
     using System.Collections.Generic;
     
-    public partial class Branch
+    public partial class Section
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Branch()
+        public Section()
         {
-            this.Section = new HashSet<Section>();
+            this.Fancier = new HashSet<Fancier>();
         }
     
+        public int IdSection { get; set; }
         public string IdBranch { get; set; }
-        public int IdRegion { get; set; }
         public string Name { get; set; }
     
-        public virtual Region Region { get; set; }
+        public virtual Branch Branch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section> Section { get; set; }
+        public virtual ICollection<Fancier> Fancier { get; set; }
     }
 }
