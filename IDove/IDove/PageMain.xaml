@@ -21,5 +21,6 @@
         <Button x:Name="BT_Region" Content="Region" HorizontalAlignment="Left" Height="32" Margin="96,530,0,0" VerticalAlignment="Top" Width="142" Click="BT_Region_Click"/>
         <Button x:Name="BT_Pigeons" Content="Pigeons" HorizontalAlignment="Left" Height="32" Margin="324,530,0,0" VerticalAlignment="Top" Width="140" Click="BT_Pigeons_Click"/>
         <Button x:Name="Fancier" Content="Hodowca" HorizontalAlignment="Left" Height="32" Margin="547,530,0,0" VerticalAlignment="Top" Width="135" Click="Fancier_Click"/>
+        <Button x:Name="FlightResult" Content="Wyniki Lotów" HorizontalAlignment="Left" Height="34" Margin="96,460,0,0" VerticalAlignment="Top" Width="142" Click="FlightResult_Click"/>
     </Grid>
 </Page>

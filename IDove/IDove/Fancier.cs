@@ -20,7 +20,7 @@ namespace IDove
             this.Pigeon = new HashSet<Pigeon>();
         }
     
-        public int IdFancier { get; set; }
+        public string IdFancier { get; set; }
         public int IdSection { get; set; }
         public int IdDovecote { get; set; }
         public string FirstName { get; set; }

@@ -16,28 +16,28 @@ using System.Windows.Shapes;
 namespace IDove
 {
     /// <summary>
-    /// Logika interakcji dla klasy Fan.xaml
+    /// Logika interakcji dla klasy Pig.xaml
     /// </summary>
-    public partial class Fan : Page
+    public partial class Pig : Page
     {
-        public Fan()
+        public Pig()
         {
             InitializeComponent();
             var ctx = new IDoveEntities();
-            DataGrid.ItemsSource = ctx.Fancier.ToList();
+            DataGrid.ItemsSource = ctx.Pigeon.ToList();
         }
 
-        private void AddFancier_Click(object sender, RoutedEventArgs e)
+        private void AddPigeon_Click(object sender, RoutedEventArgs e)
         {
-            FanDetails f = new FanDetails();
-            FR_Fancier.Navigate(f);
-            
+            Pig p = new Pig();
+            FR_Fancier.Navigate(p);
+            DataGrid.Height = this.Height - 250;
         }
 
-        private void ModifyFancier_Click(object sender, RoutedEventArgs e)
+        private void ModifyPigeon_Click(object sender, RoutedEventArgs e)
         {
-            FanDetails f = new FanDetails();
-            FR_Fancier.Navigate(f);
+            Pig p = new Pig();
+            FR_Fancier.Navigate(p);
             DataGrid.Height = this.Height - 250;
         }
 
@@ -46,12 +46,12 @@ namespace IDove
             var selectedItem = DataGrid.SelectedItem;
             if (selectedItem != null)
             {
-                string fan_id = (DataGrid.SelectedItem as Fancier).IdFancier;
+                string pig_id = (DataGrid.SelectedItem as Pigeon).IdPigeon;
                 var ctx = new IDoveEntities();
-                Fancier fan = (from f in ctx.Fancier where f.IdFancier == fan_id select f).SingleOrDefault();
-                ctx.Fancier.Remove(fan);
+                Pigeon pig = (from p in ctx.Pigeon where p.IdPigeon == pig_id select p).SingleOrDefault();
+                ctx.Pigeon.Remove(pig);
                 ctx.SaveChanges();
-                DataGrid.ItemsSource = ctx.Fancier.ToList();
+                DataGrid.ItemsSource = ctx.Pigeon.ToList();
             }
         }
     }

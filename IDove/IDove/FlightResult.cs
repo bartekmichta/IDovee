@@ -18,11 +18,11 @@ namespace IDove
         public string IdPigeon { get; set; }
         public Nullable<int> IdFlight { get; set; }
         public System.TimeSpan TimeArrival { get; set; }
-        public double Speed { get; set; }
+        public Nullable<double> Speed { get; set; }
         public Nullable<double> Coeficient { get; set; }
         public Nullable<double> GMP { get; set; }
         public Nullable<double> Points { get; set; }
-        public Nullable<int> Distance { get; set; }
+        public Nullable<double> Distance { get; set; }
     
         public virtual Flight Flight { get; set; }
         public virtual Pigeon Pigeon { get; set; }

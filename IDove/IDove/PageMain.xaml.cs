@@ -39,13 +39,20 @@ namespace IDove
 
         private void BT_Pigeons_Click(object sender, RoutedEventArgs e)
         {
-            
+            Pig pigeon = new Pig();
+            this.NavigationService.Navigate(pigeon);
         }
 
         private void Fancier_Click(object sender, RoutedEventArgs e)
         {
             Fan fan = new Fan();
             this.NavigationService.Navigate(fan);
+        }
+
+        private void FlightResult_Click(object sender, RoutedEventArgs e)
+        {
+            FlgR flg = new FlgR();
+            this.NavigationService.Navigate(flg);
         }
     }
 }

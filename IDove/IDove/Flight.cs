@@ -23,7 +23,8 @@ namespace IDove
         public int IdFlight { get; set; }
         public System.DateTime Date { get; set; }
         public string City { get; set; }
-        public System.Data.Entity.Spatial.DbGeography GPS { get; set; }
+        public Nullable<double> Latitude { get; set; }
+        public Nullable<double> Longitude { get; set; }
         public System.DateTime TimeStart { get; set; }
         public string FlightWeather { get; set; }
         public string ArrivalWeather { get; set; }
@@ -34,7 +35,6 @@ namespace IDove
         public string CatA { get; set; }
         public string CatB { get; set; }
         public string CatC { get; set; }
-        public string CatD { get; set; }
         public string CatM { get; set; }
         public Nullable<double> ConstantPoints { get; set; }
         public Nullable<int> FancierQuantity { get; set; }

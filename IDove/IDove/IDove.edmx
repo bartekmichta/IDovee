@@ -28,13 +28,14 @@
           <Property Name="IdDovecote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Adress" Type="varchar" MaxLength="60" />
           <Property Name="City" Type="varchar" MaxLength="40" />
-          <Property Name="GPS" Type="geography" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
         </EntityType>
         <EntityType Name="Fancier">
           <Key>
             <PropertyRef Name="IdFancier" />
           </Key>
-          <Property Name="IdFancier" Type="int" Nullable="false" />
+          <Property Name="IdFancier" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="IdSection" Type="int" Nullable="false" />
           <Property Name="IdDovecote" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="15" Nullable="false" />
@@ -51,7 +52,8 @@
           <Property Name="IdFlight" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="40" />
-          <Property Name="GPS" Type="geography" Nullable="false" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
           <Property Name="TimeStart" Type="datetime" Nullable="false" />
           <Property Name="FlightWeather" Type="varchar" MaxLength="20" />
           <Property Name="ArrivalWeather" Type="varchar" MaxLength="20" />
@@ -62,7 +64,6 @@
           <Property Name="CatA" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="CatB" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="CatC" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="CatD" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="CatM" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="ConstantPoints" Type="float" />
           <Property Name="FancierQuantity" Type="int" />
@@ -81,18 +82,18 @@
           <Property Name="IdPigeon" Type="varchar" MaxLength="18" />
           <Property Name="IdFlight" Type="int" />
           <Property Name="TimeArrival" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Speed" Type="float" Nullable="false" />
+          <Property Name="Speed" Type="float" />
           <Property Name="Coeficient" Type="float" />
           <Property Name="GMP" Type="float" />
           <Property Name="Points" Type="float" />
-          <Property Name="Distance" Type="int" />
+          <Property Name="Distance" Type="float" />
         </EntityType>
         <EntityType Name="Pigeon">
           <Key>
             <PropertyRef Name="IdPigeon" />
           </Key>
           <Property Name="IdPigeon" Type="varchar" MaxLength="18" Nullable="false" />
-          <Property Name="IdFancier" Type="int" Nullable="false" />
+          <Property Name="IdFancier" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="Country" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="IdColor" Type="int" />
           <Property Name="Yearbook" Type="varchar" MaxLength="4" Nullable="false" />
@@ -151,7 +152,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FlightRes__IdFli__5FB337D6">
+        <Association Name="FK__FlightRes__IdFli__68487DD7">
           <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
           <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,7 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FlightRes__IdPig__5EBF139D">
+        <Association Name="FK__FlightRes__IdPig__6754599E">
           <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="0..1" />
           <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
           <ReferentialConstraint>
@@ -175,7 +176,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pigeon__IdColor__59FA5E80">
+        <Association Name="FK__Pigeon__IdColor__6477ECF3">
           <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
           <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -187,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pigeon__IdFancie__59063A47">
+        <Association Name="FK__Pigeon__IdFancie__6383C8BA">
           <End Role="Fancier" Type="Self.Fancier" Multiplicity="1" />
           <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -233,19 +234,19 @@
             <End Role="Section" EntitySet="Section" />
             <End Role="Fancier" EntitySet="Fancier" />
           </AssociationSet>
-          <AssociationSet Name="FK__FlightRes__IdFli__5FB337D6" Association="Self.FK__FlightRes__IdFli__5FB337D6">
+          <AssociationSet Name="FK__FlightRes__IdFli__68487DD7" Association="Self.FK__FlightRes__IdFli__68487DD7">
             <End Role="Flight" EntitySet="Flight" />
             <End Role="FlightResult" EntitySet="FlightResult" />
           </AssociationSet>
-          <AssociationSet Name="FK__FlightRes__IdPig__5EBF139D" Association="Self.FK__FlightRes__IdPig__5EBF139D">
+          <AssociationSet Name="FK__FlightRes__IdPig__6754599E" Association="Self.FK__FlightRes__IdPig__6754599E">
             <End Role="Pigeon" EntitySet="Pigeon" />
             <End Role="FlightResult" EntitySet="FlightResult" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pigeon__IdColor__59FA5E80" Association="Self.FK__Pigeon__IdColor__59FA5E80">
+          <AssociationSet Name="FK__Pigeon__IdColor__6477ECF3" Association="Self.FK__Pigeon__IdColor__6477ECF3">
             <End Role="Color" EntitySet="Color" />
             <End Role="Pigeon" EntitySet="Pigeon" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pigeon__IdFancie__59063A47" Association="Self.FK__Pigeon__IdFancie__59063A47">
+          <AssociationSet Name="FK__Pigeon__IdFancie__6383C8BA" Association="Self.FK__Pigeon__IdFancie__6383C8BA">
             <End Role="Fancier" EntitySet="Fancier" />
             <End Role="Pigeon" EntitySet="Pigeon" />
           </AssociationSet>
@@ -276,7 +277,7 @@
           <Property Name="IdColor" Type="Int32" Nullable="false" />
           <Property Name="Shortcut" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="28" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Pigeon" Relationship="Self.FK__Pigeon__IdColor__59FA5E80" FromRole="Color" ToRole="Pigeon" />
+          <NavigationProperty Name="Pigeon" Relationship="Self.FK__Pigeon__IdColor__6477ECF3" FromRole="Color" ToRole="Pigeon" />
         </EntityType>
         <EntityType Name="Dovecote">
           <Key>
@@ -285,14 +286,15 @@
           <Property Name="IdDovecote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Adress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="GPS" Type="Geography" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
           <NavigationProperty Name="Fancier" Relationship="Self.FK__Fancier__IdDovec__5441852A" FromRole="Dovecote" ToRole="Fancier" />
         </EntityType>
         <EntityType Name="Fancier">
           <Key>
             <PropertyRef Name="IdFancier" />
           </Key>
-          <Property Name="IdFancier" Type="Int32" Nullable="false" />
+          <Property Name="IdFancier" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdSection" Type="Int32" Nullable="false" />
           <Property Name="IdDovecote" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
@@ -303,7 +305,7 @@
           <Property Name="Telephone_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Dovecote" Relationship="Self.FK__Fancier__IdDovec__5441852A" FromRole="Fancier" ToRole="Dovecote" />
           <NavigationProperty Name="Section" Relationship="Self.FK__Fancier__IdSecti__534D60F1" FromRole="Fancier" ToRole="Section" />
-          <NavigationProperty Name="Pigeon" Relationship="Self.FK__Pigeon__IdFancie__59063A47" FromRole="Fancier" ToRole="Pigeon" />
+          <NavigationProperty Name="Pigeon" Relationship="Self.FK__Pigeon__IdFancie__6383C8BA" FromRole="Fancier" ToRole="Pigeon" />
         </EntityType>
         <EntityType Name="Flight">
           <Key>
@@ -312,7 +314,8 @@
           <Property Name="IdFlight" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="GPS" Type="Geography" Nullable="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
           <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FlightWeather" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ArrivalWeather" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -323,7 +326,6 @@
           <Property Name="CatA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CatB" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CatC" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CatD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CatM" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ConstantPoints" Type="Double" />
           <Property Name="FancierQuantity" Type="Int32" />
@@ -333,7 +335,7 @@
           <Property Name="FirstPigeonSpeed" Type="Double" />
           <Property Name="LastPigeonTime" Type="Time" Precision="7" />
           <Property Name="LastPigeonSpeed" Type="Double" />
-          <NavigationProperty Name="FlightResult" Relationship="Self.FK__FlightRes__IdFli__5FB337D6" FromRole="Flight" ToRole="FlightResult" />
+          <NavigationProperty Name="FlightResult" Relationship="Self.FK__FlightRes__IdFli__68487DD7" FromRole="Flight" ToRole="FlightResult" />
         </EntityType>
         <EntityType Name="FlightResult">
           <Key>
@@ -343,29 +345,29 @@
           <Property Name="IdPigeon" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
           <Property Name="IdFlight" Type="Int32" />
           <Property Name="TimeArrival" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Speed" Type="Double" Nullable="false" />
+          <Property Name="Speed" Type="Double" />
           <Property Name="Coeficient" Type="Double" />
           <Property Name="GMP" Type="Double" />
           <Property Name="Points" Type="Double" />
-          <Property Name="Distance" Type="Int32" />
-          <NavigationProperty Name="Flight" Relationship="Self.FK__FlightRes__IdFli__5FB337D6" FromRole="FlightResult" ToRole="Flight" />
-          <NavigationProperty Name="Pigeon" Relationship="Self.FK__FlightRes__IdPig__5EBF139D" FromRole="FlightResult" ToRole="Pigeon" />
+          <Property Name="Distance" Type="Double" />
+          <NavigationProperty Name="Flight" Relationship="Self.FK__FlightRes__IdFli__68487DD7" FromRole="FlightResult" ToRole="Flight" />
+          <NavigationProperty Name="Pigeon" Relationship="Self.FK__FlightRes__IdPig__6754599E" FromRole="FlightResult" ToRole="Pigeon" />
         </EntityType>
         <EntityType Name="Pigeon">
           <Key>
             <PropertyRef Name="IdPigeon" />
           </Key>
           <Property Name="IdPigeon" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdFancier" Type="Int32" Nullable="false" />
+          <Property Name="IdFancier" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdColor" Type="Int32" />
           <Property Name="Yearbook" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Sex" Type="Int32" Nullable="false" />
           <Property Name="Number" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="IdBranch" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Color" Relationship="Self.FK__Pigeon__IdColor__59FA5E80" FromRole="Pigeon" ToRole="Color" />
-          <NavigationProperty Name="Fancier" Relationship="Self.FK__Pigeon__IdFancie__59063A47" FromRole="Pigeon" ToRole="Fancier" />
-          <NavigationProperty Name="FlightResult" Relationship="Self.FK__FlightRes__IdPig__5EBF139D" FromRole="Pigeon" ToRole="FlightResult" />
+          <NavigationProperty Name="Color" Relationship="Self.FK__Pigeon__IdColor__6477ECF3" FromRole="Pigeon" ToRole="Color" />
+          <NavigationProperty Name="Fancier" Relationship="Self.FK__Pigeon__IdFancie__6383C8BA" FromRole="Pigeon" ToRole="Fancier" />
+          <NavigationProperty Name="FlightResult" Relationship="Self.FK__FlightRes__IdPig__6754599E" FromRole="Pigeon" ToRole="FlightResult" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -409,7 +411,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pigeon__IdColor__59FA5E80">
+        <Association Name="FK__Pigeon__IdColor__6477ECF3">
           <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
           <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,7 +447,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pigeon__IdFancie__59063A47">
+        <Association Name="FK__Pigeon__IdFancie__6383C8BA">
           <End Role="Fancier" Type="Self.Fancier" Multiplicity="1" />
           <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -457,7 +459,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FlightRes__IdFli__5FB337D6">
+        <Association Name="FK__FlightRes__IdFli__68487DD7">
           <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
           <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
           <ReferentialConstraint>
@@ -469,7 +471,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FlightRes__IdPig__5EBF139D">
+        <Association Name="FK__FlightRes__IdPig__6754599E">
           <End Role="Pigeon" Type="Self.Pigeon" Multiplicity="0..1" />
           <End Role="FlightResult" Type="Self.FlightResult" Multiplicity="*" />
           <ReferentialConstraint>
@@ -499,7 +501,7 @@
             <End Role="Branch" EntitySet="Branch" />
             <End Role="Section" EntitySet="Section" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pigeon__IdColor__59FA5E80" Association="Self.FK__Pigeon__IdColor__59FA5E80">
+          <AssociationSet Name="FK__Pigeon__IdColor__6477ECF3" Association="Self.FK__Pigeon__IdColor__6477ECF3">
             <End Role="Color" EntitySet="Color" />
             <End Role="Pigeon" EntitySet="Pigeon" />
           </AssociationSet>
@@ -511,15 +513,15 @@
             <End Role="Section" EntitySet="Section" />
             <End Role="Fancier" EntitySet="Fancier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pigeon__IdFancie__59063A47" Association="Self.FK__Pigeon__IdFancie__59063A47">
+          <AssociationSet Name="FK__Pigeon__IdFancie__6383C8BA" Association="Self.FK__Pigeon__IdFancie__6383C8BA">
             <End Role="Fancier" EntitySet="Fancier" />
             <End Role="Pigeon" EntitySet="Pigeon" />
           </AssociationSet>
-          <AssociationSet Name="FK__FlightRes__IdFli__5FB337D6" Association="Self.FK__FlightRes__IdFli__5FB337D6">
+          <AssociationSet Name="FK__FlightRes__IdFli__68487DD7" Association="Self.FK__FlightRes__IdFli__68487DD7">
             <End Role="Flight" EntitySet="Flight" />
             <End Role="FlightResult" EntitySet="FlightResult" />
           </AssociationSet>
-          <AssociationSet Name="FK__FlightRes__IdPig__5EBF139D" Association="Self.FK__FlightRes__IdPig__5EBF139D">
+          <AssociationSet Name="FK__FlightRes__IdPig__6754599E" Association="Self.FK__FlightRes__IdPig__6754599E">
             <End Role="Pigeon" EntitySet="Pigeon" />
             <End Role="FlightResult" EntitySet="FlightResult" />
           </AssociationSet>
@@ -554,7 +556,8 @@
                 <ScalarProperty Name="IdDovecote" ColumnName="IdDovecote" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -579,7 +582,8 @@
                 <ScalarProperty Name="IdFlight" ColumnName="IdFlight" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
                 <ScalarProperty Name="FlightWeather" ColumnName="FlightWeather" />
                 <ScalarProperty Name="ArrivalWeather" ColumnName="ArrivalWeather" />
@@ -590,7 +594,6 @@
                 <ScalarProperty Name="CatA" ColumnName="CatA" />
                 <ScalarProperty Name="CatB" ColumnName="CatB" />
                 <ScalarProperty Name="CatC" ColumnName="CatC" />
-                <ScalarProperty Name="CatD" ColumnName="CatD" />
                 <ScalarProperty Name="CatM" ColumnName="CatM" />
                 <ScalarProperty Name="ConstantPoints" ColumnName="ConstantPoints" />
                 <ScalarProperty Name="FancierQuantity" ColumnName="FancierQuantity" />

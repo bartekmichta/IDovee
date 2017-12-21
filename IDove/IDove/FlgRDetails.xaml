@@ -1,0 +1,31 @@
+﻿<Page x:Class="IDove.FlgRDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IDove"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600"
+      Title="FlgRDetails">
+
+    <Grid Background="#FFE2E2E2">
+        <Label Content="Odległość:" HorizontalAlignment="Left" Height="25" Margin="304,47,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Punkty:" HorizontalAlignment="Left" Height="25" Margin="304,15,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.48,-1.6"/>
+        <Label Content="Gołąb:" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="48"/>
+        <Label Content="Numer lotu:" HorizontalAlignment="Left" Height="26" Margin="10,44,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="Czas przylotu:" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="Prędkość:" HorizontalAlignment="Left" Height="26" Margin="10,122,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="Koeficjent:" HorizontalAlignment="Left" Height="26" Margin="10,153,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <Label Content="GMP:" HorizontalAlignment="Left" Height="26" Margin="10,191,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308"/>
+        <TextBox x:Name="TX_IdPigeon" HorizontalAlignment="Left" Height="20" Margin="116,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_IdFlight" HorizontalAlignment="Left" Height="20" Margin="116,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.522,0.579"/>
+        <TextBox x:Name="TX_TimeA" HorizontalAlignment="Left" Height="21" Margin="116,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_Speed" HorizontalAlignment="Left" Height="21" Margin="116,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_Coeficient" HorizontalAlignment="Left" Height="21" Margin="116,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_GMP" HorizontalAlignment="Left" Height="21" Margin="116,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_Points" HorizontalAlignment="Left" Height="20" Margin="407,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="TX_Distance" HorizontalAlignment="Left" Height="19" Margin="407,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <Button x:Name="BT_Complete" Content="Zatwierdź" HorizontalAlignment="Left" Height="26" Margin="422,191,0,0" VerticalAlignment="Top" Width="139" Click="BT_Complete_Click"/>
+
+    </Grid>
+</Page>

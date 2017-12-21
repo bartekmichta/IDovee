@@ -23,7 +23,8 @@ namespace IDove
         public int IdDovecote { get; set; }
         public string Adress { get; set; }
         public string City { get; set; }
-        public System.Data.Entity.Spatial.DbGeography GPS { get; set; }
+        public Nullable<double> Latitude { get; set; }
+        public Nullable<double> Longitude { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fancier> Fancier { get; set; }

@@ -21,7 +21,7 @@ namespace IDove
         }
     
         public string IdPigeon { get; set; }
-        public int IdFancier { get; set; }
+        public string IdFancier { get; set; }
         public string Country { get; set; }
         public Nullable<int> IdColor { get; set; }
         public string Yearbook { get; set; }

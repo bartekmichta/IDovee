@@ -29,7 +29,7 @@ namespace IDove
         {
             Fancier fancier = new Fancier()
             {
-                IdFancier = Convert.ToInt32(TX_IdFancier.Text),
+                IdFancier = TX_IdFancier.Text,
                 IdSection = Convert.ToInt32(TX_IdSection.Text),
                 IdDovecote = Convert.ToInt32(TX_IdDovecote.Text),
                 FirstName = TX_FName.Text,
@@ -41,8 +41,8 @@ namespace IDove
             };
             using (var ctx = new IDoveEntities())
             {
-               ctx.Fancier.Add(fancier);
-               ctx.SaveChanges();
+                ctx.Fancier.Add(fancier);
+                ctx.SaveChanges();
             }
         }
     }

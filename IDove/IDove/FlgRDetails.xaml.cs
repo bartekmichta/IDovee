@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace IDove
 {
     /// <summary>
-    /// Logika interakcji dla klasy Flg.xaml
+    /// Logika interakcji dla klasy FlgRDetails.xaml
     /// </summary>
-    public partial class Flg : Page
+    public partial class FlgRDetails : Page
     {
-        public Flg()
+        public FlgRDetails()
         {
             InitializeComponent();
+        }
+
+        private void BT_Complete_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

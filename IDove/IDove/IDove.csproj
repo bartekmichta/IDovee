@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,9 +56,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -81,8 +85,11 @@
     <Compile Include="FanDetails.xaml.cs">
       <DependentUpon>FanDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Flg.xaml.cs">
-      <DependentUpon>Flg.xaml</DependentUpon>
+    <Compile Include="FlgR.xaml.cs">
+      <DependentUpon>FlgR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlgRDetails.xaml.cs">
+      <DependentUpon>FlgRDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Flight.cs">
       <DependentUpon>IDove.tt</DependentUpon>
@@ -108,6 +115,9 @@
     <Compile Include="PageMain.xaml.cs">
       <DependentUpon>PageMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pig.xaml.cs">
+      <DependentUpon>Pig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pigeon.cs">
       <DependentUpon>IDove.tt</DependentUpon>
     </Compile>
@@ -128,7 +138,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Flg.xaml">
+    <Page Include="FlgR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlgRDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +159,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PageMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
