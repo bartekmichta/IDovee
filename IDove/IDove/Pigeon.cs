@@ -19,6 +19,17 @@ namespace IDove
         {
             this.FlightResult = new HashSet<FlightResult>();
         }
+        public Pigeon(string IdPigeon,string IdFancier, string Country, Nullable<int> IdColor, string Yearbook, string Number, string IdBranch)
+        {
+            this.IdPigeon = IdPigeon;
+            this.IdFancier = IdFancier;
+            this.Country = Country;
+            this.IdColor = IdColor;
+            this.Yearbook = Yearbook;
+            this.Number = Number;
+            this.IdBranch = IdBranch;
+
+        }
     
         public string IdPigeon { get; set; }
         public string IdFancier { get; set; }

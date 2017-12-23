@@ -20,25 +20,52 @@ namespace IDove
     /// </summary>
     public partial class Fan : Page
     {
+        public static Fancier fancier; //obiekt przekazywany do FanDetails
+        public static int targetButton=0; // numer z którego korzysta FanDetails odnośnie zdarzenia 
+
         public Fan()
         {
             InitializeComponent();
             var ctx = new IDoveEntities();
-            DataGrid.ItemsSource = ctx.Fancier.ToList();
-        }
+            /*var querry = from f in ctx.Fancier join s in ctx.Section on
+                         f.IdSection equals s.IdSection join d in ctx.Dovecote
+                         on f.IdDovecote equals d.IdDovecote join p in ctx.Pigeon
+                         on f.IdFancier equals p.IdFancier
+                         select f;*/
 
+
+
+            DataGrid.ItemsSource = ctx.Fancier.ToList();
+           // DataGrid.ItemsSource = querry
+        }
+        
         private void AddFancier_Click(object sender, RoutedEventArgs e)
         {
-            FanDetails f = new FanDetails();
+            targetButton = 1;
+            FanDetails f = new FanDetails(this);
             FR_Fancier.Navigate(f);
-            
         }
 
         private void ModifyFancier_Click(object sender, RoutedEventArgs e)
         {
-            FanDetails f = new FanDetails();
-            FR_Fancier.Navigate(f);
-            DataGrid.Height = this.Height - 250;
+            targetButton = 2;
+            var selectedItem = DataGrid.SelectedItem;
+            if (selectedItem != null)
+            {
+                string IdFancier = (DataGrid.SelectedItem as Fancier).IdFancier;
+                int IdSection = (DataGrid.SelectedItem as Fancier).IdSection;
+                int IdDovecote = (DataGrid.SelectedItem as Fancier).IdDovecote;
+                string FirstName = (DataGrid.SelectedItem as Fancier).FirstName;
+                string LastName = (DataGrid.SelectedItem as Fancier).LastName;
+                string Adress = (DataGrid.SelectedItem as Fancier).Adress;
+                string City = (DataGrid.SelectedItem as Fancier).City;
+                string Mail = (DataGrid.SelectedItem as Fancier).Mail;
+                string Telephone_Number = (DataGrid.SelectedItem as Fancier).Telephone_Number;
+
+                fancier = new Fancier(IdFancier, IdSection, IdDovecote, FirstName, LastName, Adress, City, Mail, Telephone_Number);
+                FanDetails f = new FanDetails(this);
+                FR_Fancier.Navigate(f);
+            }
         }
 
         private void DeletePigeon_Click(object sender, RoutedEventArgs e)
@@ -54,5 +81,28 @@ namespace IDove
                 DataGrid.ItemsSource = ctx.Fancier.ToList();
             }
         }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            targetButton = 3;
+            var selectedItem = DataGrid.SelectedItem;
+            if (selectedItem != null)
+            {
+                string IdFancier = (DataGrid.SelectedItem as Fancier).IdFancier;
+                int IdSection = (DataGrid.SelectedItem as Fancier).IdSection;
+                int IdDovecote = (DataGrid.SelectedItem as Fancier).IdDovecote;
+                string FirstName = (DataGrid.SelectedItem as Fancier).FirstName;
+                string LastName = (DataGrid.SelectedItem as Fancier).LastName;
+                string Adress = (DataGrid.SelectedItem as Fancier).Adress;
+                string City = (DataGrid.SelectedItem as Fancier).City;
+                string Mail = (DataGrid.SelectedItem as Fancier).Mail;
+                string Telephone_Number = (DataGrid.SelectedItem as Fancier).Telephone_Number;
+
+                fancier = new Fancier(IdFancier, IdSection, IdDovecote, FirstName, LastName, Adress, City, Mail, Telephone_Number);
+                FanDetails f = new FanDetails();
+                FR_Fancier.Navigate(f);
+            }
+        }
+
     }
 }

@@ -19,6 +19,18 @@ namespace IDove
         {
             this.Pigeon = new HashSet<Pigeon>();
         }
+        public Fancier(string IdFancier, int IdSection,int IdDovecote, string FirstName, string LastName, string Adress, string City, string Mail, string Telephone_Number)
+        {
+            this.IdFancier = IdFancier;
+            this.IdSection = IdSection;
+            this.IdDovecote = IdDovecote;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Adress = Adress;
+            this.City = City;
+            this.Mail = Mail;
+            this.Telephone_Number = Telephone_Number;
+        }
     
         public string IdFancier { get; set; }
         public int IdSection { get; set; }
