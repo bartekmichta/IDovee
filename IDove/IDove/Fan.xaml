@@ -33,7 +33,7 @@
                 <DataGridTextColumn Header="Gołębnik" Binding="{Binding IdDovecote}" />
                 <DataGridTextColumn Header="Sekcjia" Binding="{Binding IdSection}" />
                 <DataGridTextColumn Header="E-mail" Binding="{Binding Mail}" />
-                <DataGridTextColumn Header="Telefon" Binding="{Binding Telephone_Number}" />
+                <DataGridTextColumn Header="Telefon"  Width="160" Binding="{Binding Telephone_Number}" />
              </DataGrid.Columns>
         </DataGrid>
         <Frame x:Name="FR_Fancier" Content="" Height="240" VerticalAlignment="Bottom"/>

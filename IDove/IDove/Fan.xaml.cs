@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace IDove
 {
-    /// <summary>
-    /// Logika interakcji dla klasy Fan.xaml
-    /// </summary>
     public partial class Fan : Page
     {
         public static Fancier fancier; //obiekt przekazywany do FanDetails
@@ -27,16 +24,7 @@ namespace IDove
         {
             InitializeComponent();
             var ctx = new IDoveEntities();
-            /*var querry = from f in ctx.Fancier join s in ctx.Section on
-                         f.IdSection equals s.IdSection join d in ctx.Dovecote
-                         on f.IdDovecote equals d.IdDovecote join p in ctx.Pigeon
-                         on f.IdFancier equals p.IdFancier
-                         select f;*/
-
-
-
             DataGrid.ItemsSource = ctx.Fancier.ToList();
-           // DataGrid.ItemsSource = querry
         }
         
         private void AddFancier_Click(object sender, RoutedEventArgs e)
