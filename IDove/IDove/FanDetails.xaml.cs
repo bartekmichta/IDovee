@@ -144,6 +144,17 @@ namespace IDove
                     break;
             }
         }
+
+        private void TX_AddDovecote_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TX_AddSection_Click(object sender, RoutedEventArgs e)
+        {
+            SecDetails sec = new SecDetails();
+            FR_AddSection.Navigate(sec);
+        } 
     }
 }
 

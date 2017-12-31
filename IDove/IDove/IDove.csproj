@@ -127,6 +127,12 @@
     <Compile Include="Region.cs">
       <DependentUpon>IDove.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sec.xaml.cs">
+      <DependentUpon>Sec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SecDetails.xaml.cs">
+      <DependentUpon>SecDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Section.cs">
       <DependentUpon>IDove.tt</DependentUpon>
     </Compile>
@@ -167,6 +173,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SecDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

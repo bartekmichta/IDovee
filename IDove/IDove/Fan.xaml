@@ -5,18 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:IDove"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="600"
-      Title="Hodowcy">
-    
+      d:DesignHeight="600"
+      Title="Hodowcy" >
+
 
     <Grid Background="#FFE2E2E2">
         <Menu VerticalAlignment="Top"  Background="#FF666883" >
             <MenuItem Header="Plik" Foreground="White" >
-                <MenuItem Header="Otwórz"/>
-                <MenuItem Header="Zakończ" />
+                <MenuItem Header="Strona główna"  Foreground="Black" Click="MainPage_Click"/>
+                <MenuItem Header="Zakończ"  Foreground="Black"/>
             </MenuItem>
             <MenuItem Header="Opcje" Foreground="White">
-                <MenuItem Header="Dokumentacja"/>
+                <MenuItem Header="Dokumentacja"  Foreground="Black"/>
             </MenuItem>
         </Menu>
         <DataGrid x:Name="DataGrid" Margin="0,61,0,248" CanUserReorderColumns="True" 
@@ -34,7 +34,7 @@
                 <DataGridTextColumn Header="Sekcjia" Binding="{Binding IdSection}" />
                 <DataGridTextColumn Header="E-mail" Binding="{Binding Mail}" />
                 <DataGridTextColumn Header="Telefon"  Width="160" Binding="{Binding Telephone_Number}" />
-             </DataGrid.Columns>
+            </DataGrid.Columns>
         </DataGrid>
         <Frame x:Name="FR_Fancier" Content="" Height="240" VerticalAlignment="Bottom"/>
         <Button x:Name="AddFancier" Content="Dodaj" HorizontalAlignment="Left" Height="24" Margin="0,23,0,0" VerticalAlignment="Top" Width="90" Click="AddFancier_Click"/>

@@ -54,5 +54,17 @@ namespace IDove
             FlgR flg = new FlgR();
             this.NavigationService.Navigate(flg);
         }
+
+        private void MainPage_Click(object sender, RoutedEventArgs e)
+        {
+            PageMain pg = new PageMain();
+            this.NavigationService.Navigate(pg);
+        }
+
+        private void Section_Click(object sender, RoutedEventArgs e)
+        {
+            Sec sec = new IDove.Sec();
+            this.NavigationService.Navigate(sec);
+        }
     }
 }

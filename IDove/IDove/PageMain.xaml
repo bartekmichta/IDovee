@@ -6,21 +6,22 @@
       xmlns:local="clr-namespace:IDove"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="PageMain" Width="800" Height="600">
+      Title="PageMain" MinWidth="800" MinHeight="600">
 
     <Grid Background="#FFE2E2E2">
         <Menu VerticalAlignment="Top"  Background="#FF666883" >
             <MenuItem Header="Plik" Foreground="White" >
-                <MenuItem Header="Otwórz"/>
-                <MenuItem Header="Zakończ" />
+                <MenuItem Header="Strona główna"  Foreground="Black" Click="MainPage_Click"/>
+                <MenuItem Header="Zakończ"  Foreground="Black"/>
             </MenuItem>
             <MenuItem Header="Opcje" Foreground="White">
-                <MenuItem Header="Dokumentacja"/>
+                <MenuItem Header="Dokumentacja"  Foreground="Black"/>
             </MenuItem>
         </Menu>
-        <Button x:Name="BT_Region" Content="Region" HorizontalAlignment="Left" Height="32" Margin="96,530,0,0" VerticalAlignment="Top" Width="142" Click="BT_Region_Click"/>
-        <Button x:Name="BT_Pigeons" Content="Pigeons" HorizontalAlignment="Left" Height="32" Margin="324,530,0,0" VerticalAlignment="Top" Width="140" Click="BT_Pigeons_Click"/>
-        <Button x:Name="Fancier" Content="Hodowca" HorizontalAlignment="Left" Height="32" Margin="547,530,0,0" VerticalAlignment="Top" Width="135" Click="Fancier_Click"/>
-        <Button x:Name="FlightResult" Content="Wyniki Lotów" HorizontalAlignment="Left" Height="34" Margin="96,460,0,0" VerticalAlignment="Top" Width="142" Click="FlightResult_Click"/>
+        <Button x:Name="BT_Region" Content="Oddziały" HorizontalAlignment="Left" Height="34" Margin="10,91,0,0" VerticalAlignment="Top" Width="142" Click="BT_Region_Click"/>
+        <Button x:Name="BT_Pigeons" Content="Gołebie" HorizontalAlignment="Left" Height="34" Margin="10,125,0,0" VerticalAlignment="Top" Width="142" Click="BT_Pigeons_Click"/>
+        <Button x:Name="Fancier" Content="Hodowcy" HorizontalAlignment="Left" Height="34" Margin="10,57,0,0" VerticalAlignment="Top" Width="142" Click="Fancier_Click"/>
+        <Button x:Name="FlightResult" Content="Wyniki Lotów" HorizontalAlignment="Left" Height="34" Margin="10,23,0,0" VerticalAlignment="Top" Width="142" Click="FlightResult_Click"/>
+        <Button x:Name="Section" Content="Sekcje" HorizontalAlignment="Left" Margin="10,159,0,0" VerticalAlignment="Top" Width="142" Height="34" Click="Section_Click"/>
     </Grid>
 </Page>

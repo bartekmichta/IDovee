@@ -7,26 +7,29 @@
       mc:Ignorable="d" d:DesignWidth="666" Loaded="Page_Loaded"
       Title="FanDetails" Height="250">
 
-    <Grid Background="#FFE2E2E2">
-        <Label Content="Numer hodowcy:" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="118" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Numer sekcji:" HorizontalAlignment="Left" Height="25" Margin="338,10,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.48,-1.6" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Numer gołębnika:" HorizontalAlignment="Left" Height="26" Margin="309,55,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="-0.052,1.538" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Imię:" HorizontalAlignment="Left" Height="26" Margin="10,55,0,0" VerticalAlignment="Top" Width="49" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Nazwisko:" HorizontalAlignment="Left" Height="26" Margin="10,102,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.53,1.308" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Adres:" HorizontalAlignment="Left" Height="26" Margin="10,147,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Miasto:" HorizontalAlignment="Left" Height="26" Margin="10,196,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="E-mail:" HorizontalAlignment="Left" Height="26" Margin="371,103,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <Label Content="Telefon:" HorizontalAlignment="Left" Height="26" Margin="371,147,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_FName" HorizontalAlignment="Left" Margin="64,56,0,169" TextWrapping="Wrap" Width="223" MaxLength="15" Height="25" FontFamily="Courier New" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox x:Name="TX_LName" HorizontalAlignment="Left" Height="25" Margin="93,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.522,0.579" MaxLength="20" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_Adress" HorizontalAlignment="Left" Height="25" Margin="75,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" MaxLength="60" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_City" HorizontalAlignment="Left" Height="25" Margin="75,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" MaxLength="40" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_Mail" HorizontalAlignment="Left" Height="25" Margin="453,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_Tel" HorizontalAlignment="Left" Height="25" Margin="453,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_IdSection" HorizontalAlignment="Left" Height="25" Margin="453,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_IdFancier" HorizontalAlignment="Left" Height="25" Margin="128,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" MaxLength="8" FontFamily="Courier New" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="TX_IdDovecote" HorizontalAlignment="Left" Height="25" Margin="453,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" FontFamily="Courier New" RenderTransformOrigin="0.695,0.6" VerticalContentAlignment="Center"/>
-        <Button x:Name="TX_Complete" Content="Zatwierdź" HorizontalAlignment="Left" Height="26" Margin="468,204,0,0" VerticalAlignment="Top" Width="139" Click="TX_Complete_Click" RenderTransformOrigin="0.542,1.218" FontStyle="Italic" VerticalContentAlignment="Center"/>
+    <Grid Background="#FFE2E2E2" Margin="0,0,-288,0">
+        <Label Content="Numer hodowcy:" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="118" VerticalContentAlignment="Center"/>
+        <Label Content="Numer sekcji:" HorizontalAlignment="Left" Height="25" Margin="338,10,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.48,-1.6" VerticalContentAlignment="Center"/>
+        <Label Content="Numer gołębnika:" HorizontalAlignment="Left" Height="26" Margin="309,55,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="-0.052,1.538" VerticalContentAlignment="Center"/>
+        <Label Content="Imię:" HorizontalAlignment="Left" Height="26" Margin="10,55,0,0" VerticalAlignment="Top" Width="49" VerticalContentAlignment="Center"/>
+        <Label Content="Nazwisko:" HorizontalAlignment="Left" Height="26" Margin="10,102,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.53,1.308" VerticalContentAlignment="Center"/>
+        <Label Content="Adres:" HorizontalAlignment="Left" Height="26" Margin="10,147,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" VerticalContentAlignment="Center"/>
+        <Label Content="Miasto:" HorizontalAlignment="Left" Height="26" Margin="10,196,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" VerticalContentAlignment="Center"/>
+        <Label Content="E-mail:" HorizontalAlignment="Left" Height="26" Margin="371,103,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" VerticalContentAlignment="Center"/>
+        <Label Content="Telefon:" HorizontalAlignment="Left" Height="26" Margin="371,147,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.53,1.308" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_FName" HorizontalAlignment="Left" Margin="64,56,0,169" TextWrapping="Wrap" Width="223" MaxLength="15" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="TX_LName" HorizontalAlignment="Left" Height="25" Margin="93,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.522,0.579" MaxLength="20" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_Adress" HorizontalAlignment="Left" Height="25" Margin="75,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" MaxLength="60" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_City" HorizontalAlignment="Left" Height="25" Margin="75,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" MaxLength="40" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_Mail" HorizontalAlignment="Left" Height="25" Margin="453,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_Tel" HorizontalAlignment="Left" Height="25" Margin="453,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_IdSection" HorizontalAlignment="Left" Height="25" Margin="453,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_IdFancier" HorizontalAlignment="Left" Height="25" Margin="128,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" MaxLength="8" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TX_IdDovecote" HorizontalAlignment="Left" Height="25" Margin="453,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.695,0.6" VerticalContentAlignment="Center"/>
+        <Button x:Name="TX_Complete" Content="Zatwierdź" HorizontalAlignment="Left" Height="26" Margin="468,204,0,0" VerticalAlignment="Top" Width="139" Click="TX_Complete_Click" RenderTransformOrigin="0.542,1.218" VerticalContentAlignment="Center"/>
+        <Button x:Name="TX_AddDovecote" Content="Dodaj gołębnik" HorizontalAlignment="Left" Margin="630,56,0,0" VerticalAlignment="Top" Width="102" Height="25" Click="TX_AddDovecote_Click"/>
+        <Button x:Name="TX_ADDSection" Content="Dodaj sekcję" HorizontalAlignment="Left" Margin="630,10,0,0" VerticalAlignment="Top" Width="102" Height="25" Click="TX_AddSection_Click"/>
+        <Frame x:Name="FR_AddSection" HorizontalAlignment="Left" Height="250" Margin="737,0,0,0" VerticalAlignment="Top" Width="217"/>
 
     </Grid>
 </Page>

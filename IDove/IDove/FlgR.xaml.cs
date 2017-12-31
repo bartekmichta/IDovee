@@ -54,5 +54,11 @@ namespace IDove
                 DataGrid.ItemsSource = ctx.FlightResult.ToList();
             }
         }
+
+        private void MainPage_Click(object sender, RoutedEventArgs e)
+        {
+            PageMain pg = new PageMain();
+            this.NavigationService.Navigate(pg);
+        }
     }
 }

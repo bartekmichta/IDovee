@@ -17,11 +17,11 @@ using System.Windows.Threading;
 namespace IDove
 {
     /// <summary>
-    /// Logika interakcji dla klasy Reg.xaml
+    /// Interaction logic for Section.xaml
     /// </summary>
-    public partial class Reg : Page
+    public partial class Sec : Page
     {
-        public Reg()
+        public Sec()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
             {
@@ -30,13 +30,31 @@ namespace IDove
             }));
             InitializeComponent();
             var ctx = new IDoveEntities();
-            DataGridRegion.ItemsSource = ctx.Region.ToList();
+            DataGridRegion.ItemsSource = ctx.Section.ToList();
         }
+
 
         private void MainPage_Click(object sender, RoutedEventArgs e)
         {
             PageMain pg = new PageMain();
             this.NavigationService.Navigate(pg);
+        }
+
+        private void AddSection_Click(object sender, RoutedEventArgs e)
+        {
+            SecDetails sec = new SecDetails();
+            FR_Section.Navigate(sec);
+            
+        }
+
+        private void ModifySection_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteSection_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

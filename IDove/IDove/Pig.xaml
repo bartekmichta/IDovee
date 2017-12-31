@@ -10,11 +10,11 @@
     <Grid Background="#FFE2E2E2">
         <Menu VerticalAlignment="Top"  Background="#FF666883" >
             <MenuItem Header="Plik" Foreground="White" >
-                <MenuItem Header="Otwórz"/>
-                <MenuItem Header="Zakończ" />
+                <MenuItem Header="Strona główna"  Foreground="Black" Click="MainPage_Click"/>
+                <MenuItem Header="Zakończ"  Foreground="Black"/>
             </MenuItem>
             <MenuItem Header="Opcje" Foreground="White">
-                <MenuItem Header="Dokumentacja"/>
+                <MenuItem Header="Dokumentacja"  Foreground="Black"/>
             </MenuItem>
         </Menu>
         <DataGrid x:Name="DataGrid" Margin="0,61,0,0" CanUserReorderColumns="True" 
